@@ -1,8 +1,12 @@
-//se debe colocar npm install prompt-sync primero en consola
-const prompt=require('prompt-sync')();
-const number =Number(prompt('ingresa un número: '));
+const readline = require('readline');
 
-function Fibonacci(num,counter,added_values=[]) {
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function Fibonacci(number,counter,added_values=[]) {
+    const num=number;
     if (counter==0) {
         if (counter==number) return 0;
         counter+=1;
@@ -27,5 +31,7 @@ function Fibonacci(num,counter,added_values=[]) {
     return (Fibonacci(num,counter,added_values));
 } 
 
-const result=Fibonacci(number,0,);
-console.log(` F(${number}) = ${result}`);
+rl.question('Ingrese su numero: ', number => {
+    console.log(`F(${number}) = ${Fibonacci(Number(number),0,)}`);
+    rl.close();
+  });
